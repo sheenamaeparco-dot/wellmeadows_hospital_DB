@@ -62,10 +62,11 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', User::class),
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Staff::class, // Changed from User to Staff
         ],
+    
 
         // 'users' => [
         //     'driver' => 'database',
