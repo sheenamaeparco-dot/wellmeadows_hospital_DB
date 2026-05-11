@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WellMeadows Dashboard</title>
@@ -106,7 +107,7 @@
             padding:10px;
             border:none;
             border-radius:10px;
-            background: #4f1919;
+            background: #671a1a;
             color:white;
             font-size:16px;
             font-weight:bold;
@@ -142,7 +143,7 @@
 
             <a href="#">Dashboard</a>
 
-            <a href="#">Patients</a>
+            <a href="#">Patient Management</a>
 
             <a href="#">Staff & Department</a>
 
@@ -184,16 +185,19 @@
         <div class="cards-container">
 
         <div class="card">
+            <i class="fas fa-calendar-day"></i> <!-- Calendar Icon -->
             <h3>Today's Appointment</h3>
             <h1>0</h1>
         </div>
 
         <div class="card">
+            <i class="fas fa-users"></i> <!-- Users Icon -->
             <h3>Total Patients</h3>
             <h1>0</h1>
         </div>
 
         <div class="card">
+             <i class="fas fa-bed"></i> <!-- Bed Icon -->
             <h3>Available Beds</h3>
             <h1>0</h1>
         </div>

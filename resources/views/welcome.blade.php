@@ -110,7 +110,7 @@
 
 
         .title-box h1{
-            font-size:63px;
+            font-size:80px;
             line-height:1.20;
             margin-bottom:10px;
             font-weight:800;
