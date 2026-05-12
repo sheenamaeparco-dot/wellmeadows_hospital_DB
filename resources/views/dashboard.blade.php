@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WellMeadows Dashboard</title>
@@ -73,6 +72,41 @@
             background: #5a1e1e;
         }
 
+        /* SUBMENU DROPDOWN STYLES */
+        .submenu {
+            padding-left: 15px;
+            margin-bottom: 10px;
+            margin-top: -5px;
+            display: block; /* Shown by default, but toggled by JS */
+        }
+
+        /* CSS class to hide the dropdown initially */
+        .hidden {
+            display: none;
+        }
+
+        .submenu a {
+            display: block;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .submenu a.active-sub {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-weight: bold;
+        }
+
+        .submenu a:hover {
+            background: #5a1e1e;
+            color: white;
+        }
+
         /* MAIN CONTENT */
 
         .main-content{
@@ -107,7 +141,7 @@
             padding:10px;
             border:none;
             border-radius:10px;
-            background: #671a1a;
+            background: #4f1919;
             color:white;
             font-size:16px;
             font-weight:bold;
@@ -143,11 +177,21 @@
 
             <a href="#">Dashboard</a>
 
-            <a href="#">Patient Management</a>
+            <a href="#">Patients</a>
 
             <a href="#">Staff & Department</a>
 
-            <a href="#">Ward & Bed</a>
+            <!-- Added id and click runner function -->
+            <a href="javascript:void(0);" id="ward-menu-btn" style="margin-bottom: 5px;">Ward & Bed</a>
+            
+            <!-- Hidden by default with the 'hidden' class -->
+            <div class="submenu hidden" id="ward-submenu">
+                <!-- Laravel named route helpers check which sub-page is active -->
+                <a href="{{ route('ward.reports') }}" class="{{ request()->routeIs('ward.reports') ? 'active-sub' : '' }}">Reports</a>
+                <a href="{{ route('ward.bed-map') }}" class="{{ request()->routeIs('ward.bed-map') ? 'active-sub' : '' }}">Bed map</a>
+                <a href="{{ route('ward.assign-bed') }}" class="{{ request()->routeIs('ward.assign-bed') ? 'active-sub' : '' }}">Assign bed</a>
+                <a href="{{ route('ward.requisitions') }}" class="{{ request()->routeIs('ward.requisitions') ? 'active-sub' : '' }}">Requisitions</a>
+            </div>
 
             <a href="#">Appointment & Treatment</a>
 
@@ -185,24 +229,41 @@
         <div class="cards-container">
 
         <div class="card">
-            <i class="fas fa-calendar-day"></i> <!-- Calendar Icon -->
             <h3>Today's Appointment</h3>
             <h1>0</h1>
         </div>
 
         <div class="card">
-            <i class="fas fa-users"></i> <!-- Users Icon -->
             <h3>Total Patients</h3>
             <h1>0</h1>
         </div>
 
         <div class="card">
-             <i class="fas fa-bed"></i> <!-- Bed Icon -->
             <h3>Available Beds</h3>
             <h1>0</h1>
         </div>
 
     </div>
+
+</div>
+
+<!-- Dropdown Menu Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var submenu = document.getElementById('ward-submenu');
+        
+        // Auto-detects if your current browser page url path is inside your ward routes
+        // If it matches, it keeps the menu panel slid open across individual page refreshes
+        if (window.location.pathname.includes('/ward-bed/')) {
+            submenu.classList.remove('hidden');
+        }
+
+        // Toggles the submenu visibility configuration on click events
+        document.getElementById('ward-menu-btn').addEventListener('click', function() {
+            submenu.classList.toggle('hidden');
+        });
+    });
+</script>
 
 </body>
 </html>
