@@ -63,38 +63,66 @@
         }
 
         /* SUBMENU SYSTEM DROPDOWN */
-        .submenu {
-            padding-left: 15px;
-            margin-bottom: 10px;
-            margin-top: -5px;
-            display: block;
-        }
+        /* Container block formatting for the nested items */
+.submenu {
+    background: rgba(0, 0, 0, 0.2); /* Dark overlay coat shade container block */
+    border-radius: 12px;
+    padding: 10px 5px;
+    margin: 5px 0 15px 0;
+    display: block; /* Managed smoothly by JS class toggling */
+}
 
-        .hidden {
-            display: none !important;
-        }
+/* Individual list entries styled with bullet indent hints */
+.submenu a {
+    display: block;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: none;
+    padding: 10px 20px !important;
+    font-size: 14px;
+    transition: 0.2s ease;
+    border-radius: 8px;
+}
 
-        .submenu a {
-            display: block;
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-bottom: 5px;
-            font-size: 14px;
-            transition: 0.2s;
-        }
+/* Simulated dot prefix bullet characters */
+.submenu a::before {
+    content: "•";
+    color: rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    width: 15px;
+    margin-left: -5px;
+    font-size: 16px;
+    vertical-align: middle;
+}
 
-        .submenu a.active-sub {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            font-weight: bold;
-        }
+.submenu a:hover, .submenu a.active-sub {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff !important;
+}
 
-        .submenu a:hover {
-            background: #5a1e1e;
-            color: white;
-        }
+/* Layout alignment structures for the primary menu action headers */
+.menu-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Arrow indicator element transformation transition settings */
+.arrow-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+}
+
+/* Toggled active transformation state to flip the pointer upside down */
+.arrow-rotate {
+    transform: rotate(180deg);
+}
+
+.hidden {
+    display: none !important;
+}
+
 
         .logout-btn{
             width:90%;
@@ -383,16 +411,23 @@
     <!-- SIDEBAR NAVIGATION PANEL -->
     <div class="sidebar">
         <img src="{{ asset('images/logo.png') }}" alt="WellMeadows Logo" class="logo-img">
-        <div class="logo">WellMeadows</div>
+        <div class="logo">
+            WellMeadows
+        </div>
 
         <div class="sidebar-menu">
             <a href="{{ route('dashboard') }}">Dashboard</a>
             <a href="#">Patients</a>
             <a href="#">Staff & Department</a>
 
-            <a href="javascript:void(0);" id="ward-menu-btn" style="margin-bottom: 5px;">Ward & Bed</a>
+            <!-- Ward & Bed parent section trigger link -->
+            <a href="javascript:void(0);" id="ward-menu-btn" class="menu-trigger" style="margin-bottom: 5px;">
+                <span>Ward & Bed</span>
+                <span class="arrow-icon" id="ward-arrow">&#9662;</span>
+            </a>
             
-            <div class="submenu" id="ward-submenu">
+            <!-- Block-contained submenu area box -->
+            <div class="submenu hidden" id="ward-submenu">
                 <a href="{{ route('ward.scoreboard') }}" class="{{ request()->routeIs('ward.scoreboard') ? 'active-sub' : '' }}">Scoreboard</a>
                 <a href="{{ route('ward.bed-map') }}" class="{{ request()->routeIs('ward.bed-map') ? 'active-sub' : '' }}">Bed map</a>
                 <a href="{{ route('ward.requisitions') }}" class="{{ request()->routeIs('ward.requisitions') ? 'active-sub' : '' }}">Requisitions</a>
@@ -403,11 +438,15 @@
             <a href="#">Settings</a>
         </div>
 
+        <!-- Logout Action Controller Panel Section -->
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button class="logout-btn" type="submit">Logout</button>
+            <button class="logout-btn" type="submit">
+                Logout
+            </button>
         </form>
-    </div>
+
+    </div> 
 
     <!-- MAIN INTERFACE VIEWPORT -->
        <div class="main-content">
@@ -610,34 +649,41 @@
 <!-- Navigation dropdown and modal click-trigger events controller scripts -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // --- Sidebar Drawer Dropdown Logic ---
+        // --- NEW UPDATED Sidebar Drawer & Arrow Dropdown Logic ---
         var submenu = document.getElementById('ward-submenu');
+        var arrow = document.getElementById('ward-arrow');
+        
+        // Keeps the container block open and arrow flipped on active routes
         if (window.location.pathname.includes('/ward-bed/')) {
             submenu.classList.remove('hidden');
+            if (arrow) arrow.classList.add('arrow-rotate');
         }
+
+        // Toggles visibility and rotates the menu arrow on click
         document.getElementById('ward-menu-btn').addEventListener('click', function() {
             submenu.classList.toggle('hidden');
+            if (arrow) arrow.classList.toggle('arrow-rotate');
         });
 
-        // --- Interactive Modal Visibility Window Control Elements ---
+        // --- Interactive Modal Window Elements (KEPT SAFE HERE) ---
         var modal = document.getElementById('requisition-modal');
         var openBtn = document.getElementById('open-modal-btn');
         var closeX = document.getElementById('close-modal-x');
         var closeBtn = document.getElementById('close-modal-btn');
 
-        // Display Modal
-        openBtn.addEventListener('click', function() {
-            modal.classList.remove('hidden');
-        });
-
-        // Hide Modal Hooks
-        function hideModal() {
-            modal.classList.add('hidden');
+        if (openBtn) {
+            openBtn.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+            });
         }
-        closeX.addEventListener('click', hideModal);
-        closeBtn.addEventListener('click', hideModal);
 
-        // Closes the modal workspace automatically if the background filter layer is clicked directly
+        function hideModal() {
+            if (modal) modal.classList.add('hidden');
+        }
+        
+        if (closeX) closeX.addEventListener('click', hideModal);
+        if (closeBtn) closeBtn.addEventListener('click', hideModal);
+
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
                 hideModal();
