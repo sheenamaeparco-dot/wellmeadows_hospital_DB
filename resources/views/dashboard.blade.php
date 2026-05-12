@@ -187,9 +187,8 @@
             <!-- Hidden by default with the 'hidden' class -->
             <div class="submenu hidden" id="ward-submenu">
                 <!-- Laravel named route helpers check which sub-page is active -->
-                <a href="{{ route('ward.reports') }}" class="{{ request()->routeIs('ward.reports') ? 'active-sub' : '' }}">Reports</a>
+                <a href="{{ route('ward.scoreboard') }}" class="{{ request()->routeIs('ward.scoreboard') ? 'active-sub' : '' }}">Scoreboard</a>
                 <a href="{{ route('ward.bed-map') }}" class="{{ request()->routeIs('ward.bed-map') ? 'active-sub' : '' }}">Bed map</a>
-                <a href="{{ route('ward.assign-bed') }}" class="{{ request()->routeIs('ward.assign-bed') ? 'active-sub' : '' }}">Assign bed</a>
                 <a href="{{ route('ward.requisitions') }}" class="{{ request()->routeIs('ward.requisitions') ? 'active-sub' : '' }}">Requisitions</a>
             </div>
 
