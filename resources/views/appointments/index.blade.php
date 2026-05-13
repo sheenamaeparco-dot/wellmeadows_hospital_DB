@@ -1,34 +1,14 @@
-@extends('layouts.app') @section('content')
-<div class="module-container">
-    <div class="module-header">
-        <h1>Appointment & Treatment Management</h1>
-        <button class="btn-primary">+ Schedule New Appointment</button>
-    </div>
+@extends('layouts.app')
 
-    <div class="stats-row">
-        <div class="mini-card">Today's Appointments: 0</div>
-        <div class="mini-card">Pending Treatments: 0</div>
-    </div>
-
-    <div class="main-card">
-        <h3>Current Appointments</h3>
-        <table class="wellmeadows-table">
-            <thead>
-                <tr>
-                    <th>Patient Name</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Doctor/Nurse</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colspan="6" style="text-align: center;">No appointments found.</td>
-                </tr>
-            </tbody>
-        </table>
+@section('content')
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-4">
+                {{ __('Appointment & Treatment Management') }}
+            </h2>
+            
+            </div>
     </div>
 </div>
 @endsection

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,38 +28,42 @@
         /* SIDEBAR */
 
        .sidebar{
-            width:260px;
-            background: rgba(107, 3, 3, 0.8);
+            width:280px;
+            background: #2D533E;
             color:white;
-            padding:25px;
+            padding:15px 10px;
+
 
             backdrop-filter: blur(10px);
         }
 
-        .logo{
-            font-size:30px;
-            font-weight:bold;
-            margin-bottom:40px;
-        }
+        
+        /* Container to hold both logo and text side-by-side */
+    .brand-container {
+        display: flex;
+        align-items: center; /* Vertically centers the logo with the text */
+        gap: 3px;           /* Space between the logo and the text */
+        margin-bottom: 20px;
+        width: 100%;
+        overflow: visible;
+    }
 
         .logo-img {
-            width: 80px; /* Adjust the size to fit your design */
-            height: auto;
-            margin-bottom: 20px; /* Space between logo and text */
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            width: 70px;         /* Reduced size to fit better next to text */
+            height: 85px;
+            object-fit: cover;
+            transform: scale(1.5); 
         }
 
 
         .sidebar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 40px;
-            text-align: center;
+            font-size: 23px;         /* Dropped slightly from 30px so there is room for the 60px logo */
+            font-weight: 700;
+            font-family:'Poppins', sans-serif;
             color: white;
+            margin-bottom: 0;
+            white-space: nowrap; 
         }
-
         .sidebar-menu a{
             display:block;
             color:white;
@@ -67,10 +72,15 @@
             border-radius:10px;
             margin-bottom:10px;
             transition:0.3s;
+
+            font-family:'Poppins', sans-serif;
+            font-size:15px;
+            font-weight:500;
+            letter-spacing:0.2px;
         }
 
         .sidebar-menu a:hover{
-            background: #5a1e1e;
+            background: #58936E ;
         }
 
         /* MAIN CONTENT */
@@ -107,12 +117,14 @@
             padding:10px;
             border:none;
             border-radius:10px;
-            background: #671a1a;
+            background: #58936E;
             color:white;
             font-size:16px;
             font-weight:bold;
             cursor:pointer;
             margin-top:50px;
+            font-family: 'Poppins', sans-serif;
+
 }
 
         .cards-container{
@@ -134,9 +146,10 @@
     <!-- SIDEBAR -->
 
     <div class="sidebar">
-        <img src="{{ asset('images/logo.png') }}" alt="WellMeadows Logo" class="logo-img">
-        <div class="logo">
-            WellMeadows
+    <!-- Wrap both in this new container -->
+        <div class="brand-container">
+            <img src="{{ asset('images/logo-green.png') }}" alt="WellMeadows Logo" class="logo-img">
+            <div class="logo">WellMeadows</div>
         </div>
 
         <div class="sidebar-menu">
@@ -149,7 +162,9 @@
 
             <a href="#">Ward & Bed</a>
 
-            <a href="#">Appointment & Treatment</a>
+            <a href="{{ route('appointments.index')}}" class="sidebar-link">
+                Appointment & Treatment
+            </a>
 
             <a href="#">Billing & Reports</a>
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WellMeadows Hospital</title>
@@ -14,7 +15,7 @@
         }
 
         body{
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             overflow:hidden;
         }
 
@@ -54,12 +55,12 @@
 
         .login-box h2{
             text-align:center;
-            margin-bottom:10px;
+            margin-bottom:5px;
         }
 
         .login-box p{
             text-align:center;
-            margin-bottom:25px;
+            margin-bottom:20px;
             font-size:14px;
         }
 
@@ -104,28 +105,39 @@
         }
 
         .brand-name span{
-            color:#ef4444;
+            color:#58936E;
             right:50px;
 }
 
 
         .title-box h1{
-            font-size:80px;
+            font-size:70px;
             line-height:1.20;
             margin-bottom:10px;
             font-weight:800;
+ 
         }
 
 
         .title-box p{
             font-size:15px;
             font-weight:bold;
+            letter-spacing: 1px;
+        }
+
+        .logo-wrapper{
+            height:110px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            overflow:hidden;
+            margin-bottom:5px;
         }
 
         .logos{
-            width:80px;
-            display:block;
-            margin:0 auto 20px auto;
+            width:230px;
+            height:auto;
+            transform:scale(1.35);
         }
 
 
@@ -140,8 +152,10 @@
 
         <div class="login-box">
 
-
-            <img src="images/logo.png" class="logos">
+            <div class="logo-wrapper">
+                <img src="images/logo-green.png" class="logos">
+            </div>
+                  
             <h2>Welcome Back</h2>
             <p>Please login to continue</p>
 
