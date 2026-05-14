@@ -35,7 +35,7 @@
             </div>
 
             <div class="sidebar-menu">
-                <a href="{{ route('dashboard') }}">Dashboard</a>
+                <a href="{{ route('dashboard') }}">📋Dashboard</a>
                 <a href="{{ route('patients.index') }}">Patient Management</a>
                 <a href="{{ route('staff.index') }}">Staff & Department</a>
                 <a href="{{ route('wards.index') }}">Ward & Bed</a>
