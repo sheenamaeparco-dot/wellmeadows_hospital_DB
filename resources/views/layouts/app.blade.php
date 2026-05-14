@@ -36,11 +36,11 @@
 
             <div class="sidebar-menu">
                 <a href="{{ route('dashboard') }}">Dashboard</a>
-                <a href="#">Patient Management</a>
-                <a href="#">Staff & Department</a>
-                <a href="#">Ward & Bed</a>
+                <a href="{{ route('patients.index') }}">Patient Management</a>
+                <a href="{{ route('staff.index') }}">Staff & Department</a>
+                <a href="{{ route('wards.index') }}">Ward & Bed</a>
                 <a href="{{ route('appointments.index') }}">Appointment & Treatment</a>
-                <a href="#">Billing & Reports</a>
+                <a href="{{ route('billings.index') }}">Billing & Reports</a>
                 <a href="#">Settings</a>
             </div>
 

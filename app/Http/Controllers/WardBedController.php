@@ -7,6 +7,11 @@ use App\Models\Requisition;
 
 class WardBedController extends Controller
 {
+
+    public function index()
+    {
+        return view('wards.index'); // For now, just show the dashboard so it doesn't crash
+    }
     public function scoreboard() {
         return view('ward.scoreboard');
     }

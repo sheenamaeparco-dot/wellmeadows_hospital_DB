@@ -1,6 +1,8 @@
 <?php
-
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WardBedController;
 use Illuminate\Support\Facades\Route;
@@ -30,8 +32,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/ward-bed/requisitions', [WardBedController::class, 'requisitions'])->name('ward.requisitions');
     Route::post('/ward-bed/requisitions', [WardBedController::class, 'storeRequisition'])->name('ward.requisitions.store');
 });
+// 1. Patient Records Module
+Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
 
+// 2. Staff & Department Module
+Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+
+// 3. Ward & Bed Management Module
+Route::get('/wards', [WardBedController::class, 'index'])->name('wards.index');
+
+// 4. Appointment & Treatment Module (Yours)
 Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+
+// 5. Billing 
+Route::get('/billings', [BillingController::class, 'index'])->name('billings.index');
 
 require __DIR__.'/auth.php';
 
