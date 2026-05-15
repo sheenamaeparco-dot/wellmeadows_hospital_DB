@@ -23,14 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Ward & Bed Routes
-    Route::get('/ward-bed/scoreboard', [WardBedController::class, 'scoreboard'])->name('ward.scoreboard');
-    Route::get('/ward-bed/bed-map', [WardBedController::class, 'bedMap'])->name('ward.bed-map');
-
-
-    // Requisitions - View and Submit
-    Route::get('/ward-bed/requisitions', [WardBedController::class, 'requisitions'])->name('ward.requisitions');
-    Route::post('/ward-bed/requisitions', [WardBedController::class, 'storeRequisition'])->name('ward.requisitions.store');
 });
 // 1. Patient Records Module
 Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
@@ -42,7 +34,9 @@ Route::get('/staff/departments', [StaffController::class, 'departments'])->name(
 Route::get('/staff/schedules', [StaffController::class, 'schedules'])->name('staff.schedules');
 
 // 3. Ward & Bed Management Module
-Route::get('/wards', [WardBedController::class, 'index'])->name('wards.index');
+Route::get('/ward', [WardBedController::class, 'index'])->name('ward.index');
+Route::get('/ward/bed-map', [WardBedController::class, 'bedmap'])->name('ward.bedmap');
+Route::get('/ward/requisitions', [WardBedController::class, 'requisitions'])->name('ward.requisitions');
 
 // 4. Appointment & Treatment Module (Yours)
 Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
