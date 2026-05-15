@@ -7,9 +7,6 @@
                 Welcome, {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                 <i class="fas fa-hand-paper welcome-icon"></i>
             </h2>
-
-
-
         </div>
     </div>
 
@@ -19,5 +16,5 @@
             <h3>Today's Appointment</h3>
             <h1>0</h1>
         </div>
-        </div>
+    </div>
 @endsection

@@ -26,8 +26,8 @@ Route::middleware('auth')->group(function () {
     // Ward & Bed Routes
     Route::get('/ward-bed/scoreboard', [WardBedController::class, 'scoreboard'])->name('ward.scoreboard');
     Route::get('/ward-bed/bed-map', [WardBedController::class, 'bedMap'])->name('ward.bed-map');
-    
-    
+
+
     // Requisitions - View and Submit
     Route::get('/ward-bed/requisitions', [WardBedController::class, 'requisitions'])->name('ward.requisitions');
     Route::post('/ward-bed/requisitions', [WardBedController::class, 'storeRequisition'])->name('ward.requisitions.store');
@@ -37,6 +37,10 @@ Route::get('/patients', [PatientController::class, 'index'])->name('patients.ind
 
 // 2. Staff & Department Module
 Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+Route::get('/staff/management', [StaffController::class, 'management'])->name('staff.management');
+Route::get('/staff/departments', [StaffController::class, 'departments'])->name('staff.departments');
+Route::get('/staff/schedules', [StaffController::class, 'schedules'])->name('staff.schedules');
 
 // 3. Ward & Bed Management Module
 Route::get('/wards', [WardBedController::class, 'index'])->name('wards.index');
@@ -44,7 +48,7 @@ Route::get('/wards', [WardBedController::class, 'index'])->name('wards.index');
 // 4. Appointment & Treatment Module (Yours)
 Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
 
-// 5. Billing 
+// 5. Billing
 Route::get('/billings', [BillingController::class, 'index'])->name('billings.index');
 
 require __DIR__.'/auth.php';
