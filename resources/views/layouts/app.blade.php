@@ -16,8 +16,7 @@
         .brand-container { display: flex; align-items: center; gap: 3px; margin-bottom: 20px; width: 100%; }
         .logo-img { width: 70px; height: 85px; object-fit: cover; transform: scale(1.5); }
         .sidebar .logo { font-size: 23px; font-weight: 700; font-family:'Poppins', sans-serif; color: white; white-space: nowrap; }
-        .sidebar-menu a { display:block; color:white; text-decoration:none; padding:15px; border-radius:10px; margin-bottom:10px; transition:0.3s; font-family:'Poppins', sans-serif; font-size:15px; font-weight:500; }
-        .sidebar-menu a { display: flex; align-items: center; padding: 20px 18px; border-radius: 10px; margin-bottom: 10px; color: white; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500; gap: 12px; }
+        .sidebar-menu a { display:block; color:white; text-decoration:none; padding:20px; border-radius:10px; margin-bottom:10px; transition:0.3s; font-family:'Poppins', sans-serif; font-size:15px; font-weight:500; gap: 12px; }
         .sidebar-menu a i { width: 26px; min-width: 26px; text-align: center; font-size: 18px; }
         .sidebar-menu a:hover { background: #58936E; }
         .main-content { flex:1; padding:30px; }
@@ -44,6 +43,7 @@
             60% { transform: rotate(15deg); }
             80% { transform: rotate(-5deg); }
         }
+
 
     </style>
 </head>
