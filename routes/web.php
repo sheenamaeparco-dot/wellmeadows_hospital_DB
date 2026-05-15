@@ -35,8 +35,7 @@ Route::middleware('auth')->group(function () {
 // 1. Patient Records Module
 Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
 
-// 2. Staff & Department Module
-Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+// 2. Staff & Department Module (Lovely)
 Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
 Route::get('/staff/management', [StaffController::class, 'management'])->name('staff.management');
 Route::get('/staff/departments', [StaffController::class, 'departments'])->name('staff.departments');

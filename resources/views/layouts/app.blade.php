@@ -11,15 +11,17 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
         body { background:#f4f6f9; }
         .container { display:flex; min-height:100vh; }
-        .sidebar { width:280px; background: #2D533E; color:white; padding:15px 10px; backdrop-filter: blur(10px); }
+        .sidebar { width:280px; background: #2D533E; color:white; padding:15px 10px; backdrop-filter: blur(10px); display:flex; flex-direction:column; min-height:100vh; }
         .brand-container { display: flex; align-items: center; gap: 3px; margin-bottom: 20px; width: 100%; }
         .logo-img { width: 70px; height: 85px; object-fit: cover; transform: scale(1.5); }
         .sidebar .logo { font-size: 23px; font-weight: 700; font-family:'Poppins', sans-serif; color: white; white-space: nowrap; }
-        .sidebar-menu a { display: flex; align-items: center; padding: 20px 18px; border-radius: 10px; margin-bottom: 10px; color: white; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500; gap: 12px; }
+        .sidebar-menu { flex:1; }
+        .sidebar-menu a { display:flex; color:white; text-decoration:none; padding:20px; border-radius:10px; margin-bottom:10px; transition:0.3s; font-family:'Poppins', sans-serif; font-size:15px; font-weight:500; gap: 12px; }
         .sidebar-menu a i { width: 26px; min-width: 26px; text-align: center; font-size: 18px; }
         .sidebar-menu a:hover { background: #58936E; }
+        .sidebar-menu a.active { background: #58936E; }
         .main-content { flex:1; padding:30px; }
-        .logout-btn { width:90%; padding:10px; border:none; border-radius:10px; background: #58936E; color:white; font-size:16px; font-weight:bold; cursor:pointer; margin-top:50px; font-family: 'Poppins', sans-serif; }
+        .logout-btn { width:90%; padding:10px; border:none; border-radius:10px; background:#58936E; color:white; font-size:16px; font-weight:bold; cursor:pointer; font-family:'Poppins', sans-serif; display:block; margin-left:auto; margin-right:auto; }
         .topbar { background:white; padding:40px; border-radius:15px; display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; }
         .card { background:white; padding:30px; border-radius:15px; width: 298px; line-height:40px; }
         .cards-container { display:flex; gap:20px; margin-top:20px; flex-wrap:wrap; }
@@ -33,7 +35,6 @@
             animation: simple-wave 2.5s infinite;
             transform-origin: bottom center;
         }
-
         @keyframes simple-wave {
             0%, 100% { transform: rotate(0deg); }
             20% { transform: rotate(15deg); }
@@ -42,34 +43,62 @@
             80% { transform: rotate(-5deg); }
         }
 
-        /* Dropdown styles sa Staff & Department */
-        .dropdown-parent {
+        /* ── Staff & Department dropdown styles (Lovely)── */
+        .staff-parent {
             display: flex;
             align-items: center;
-            padding: 20px 18px;
-            border-radius: 10px;
-            margin-bottom: 5px;
+            justify-content: space-between;
             color: white;
             text-decoration: none;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
             font-family: 'Poppins', sans-serif;
             font-size: 15px;
             font-weight: 500;
             gap: 12px;
             cursor: pointer;
-            justify-content: space-between;
+            transition: 0.3s;
         }
-        .dropdown-parent:hover { background: #58936E; }
-        .dropdown-parent.active { background: #58936E; }
-        .dropdown-parent-left { display: flex; align-items: center; gap: 12px; }
-        .dropdown-parent-left i { width: 26px; min-width: 26px; text-align: center; font-size: 18px; }
-        .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
-        .dropdown-arrow.rotated { transform: rotate(180deg); }
-        .dropdown-submenu { display: none; flex-direction: column; padding-left: 20px; margin-bottom: 5px; }
-        .dropdown-submenu.open { display: flex; }
-        .dropdown-submenu a { display: flex; align-items: center; padding: 12px 18px; border-radius: 10px; margin-bottom: 4px; color: rgba(255,255,255,0.85); text-decoration: none; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 400; gap: 10px; }
-        .dropdown-submenu a i { width: 20px; min-width: 20px; text-align: center; font-size: 15px; }
-        .dropdown-submenu a:hover { background: #58936E; color: white; }
-        .dropdown-submenu a.active { background: #58936E; color: white; }
+        .staff-parent:hover { background: #58936E; }
+        .staff-parent.active { background: #58936E; }
+        .staff-parent-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .staff-parent-left i { width: 26px; min-width: 26px; text-align: center; font-size: 18px; }
+        .staff-arrow { font-size: 12px; transition: transform 0.3s ease; opacity: 0.8; }
+        .staff-arrow.rotated { transform: rotate(180deg); }
+
+        .staff-submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            margin-top: -4px;
+        }
+        .staff-submenu.open { display: flex; }
+        .staff-submenu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            border-radius: 10px;
+            margin-bottom: 4px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+        .staff-submenu a:hover { background: #58936E; color: white; }
+        .staff-submenu a.active { background: #58936E; color: white; }
+        /* ── Staff & Department dropdown styles (Lovely)── */
+
     </style>
 </head>
 <body>
@@ -81,63 +110,77 @@
             </div>
 
             <div class="sidebar-menu">
+
                 <a href="{{ route('dashboard') }}"
-                   style="{{ request()->routeIs('dashboard') ? 'background:#58936E;' : '' }}">
+                   class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     <i class="fas fa-th-large"></i> Dashboard
                 </a>
 
                 <a href="{{ route('patients.index') }}"
-                   style="{{ request()->routeIs('patients.*') ? 'background:#58936E;' : '' }}">
+                   class="{{ request()->routeIs('patients.*') ? 'active' : '' }}">
                     <i class="fas fa-user-injured"></i> Patient Management
                 </a>
 
-                {{-- Staff & Department with Dropdown --}}
-                <a href="{{ route('staff.index') }}"
-                   class="dropdown-parent {{ request()->routeIs('staff.*') ? 'active' : '' }}"
-                   onclick="toggleDropdown(event, 'staff-dropdown', 'staff-arrow')">
-                    <div class="dropdown-parent-left">
-                        <i class="fas fa-users-cog"></i> Staff & Department
-                    </div>
-                    <i class="fas fa-chevron-down dropdown-arrow {{ request()->routeIs('staff.*') ? 'rotated' : '' }}"
-                       id="staff-arrow"></i>
-                </a>
+                <!-- Staff & Department with dropdown (Lovely) -->
+                @if(request()->routeIs('staff.*'))
+                    <a href="#"
+                       class="staff-parent active"
+                       onclick="event.preventDefault(); toggleStaff()">
+                        <div class="staff-parent-left">
+                            <i class="fas fa-users-cog"></i> Staff & Department
+                        </div>
+                        <i class="fas fa-chevron-down staff-arrow rotated" id="staff-arrow"></i>
+                    </a>
+                @else
+                    <a href="{{ route('staff.index') }}"
+                       class="staff-parent"
+                       onclick="toggleStaff()">
+                        <div class="staff-parent-left">
+                            <i class="fas fa-users-cog"></i> Staff & Department
+                        </div>
+                        <i class="fas fa-chevron-down staff-arrow" id="staff-arrow"></i>
+                    </a>
+                @endif
 
-                <div class="dropdown-submenu {{ request()->routeIs('staff.*') ? 'open' : '' }}"
-                    id="staff-dropdown">
+                <div class="staff-submenu {{ request()->routeIs('staff.*') ? 'open' : '' }}"
+                     id="staff-submenu">
                     <a href="{{ route('staff.management') }}"
-                    style="{{ request()->routeIs('staff.management') ? 'background:#58936E; color:white;' : '' }}">
+                       class="{{ request()->routeIs('staff.management') ? 'active' : '' }}">
                         Staff Management
                     </a>
                     <a href="{{ route('staff.departments') }}"
-                    style="{{ request()->routeIs('staff.departments') ? 'background:#58936E; color:white;' : '' }}">
+                       class="{{ request()->routeIs('staff.departments') ? 'active' : '' }}">
                         Departments & Wards
                     </a>
                     <a href="{{ route('staff.schedules') }}"
-                    style="{{ request()->routeIs('staff.schedules') ? 'background:#58936E; color:white;' : '' }}">
+                       class="{{ request()->routeIs('staff.schedules') ? 'active' : '' }}">
                         Work Schedules
                     </a>
                 </div>
+                <!-- Staff & Department with dropdown (Lovely) -->
 
                 <a href="{{ route('wards.index') }}"
-                   style="{{ request()->routeIs('wards.*') ? 'background:#58936E;' : '' }}">
+                   class="{{ request()->routeIs('wards.*') ? 'active' : '' }}">
                     <i class="fas fa-bed"></i> Ward & Bed
                 </a>
 
                 <a href="{{ route('appointments.index') }}"
-                   style="{{ request()->routeIs('appointments.*') ? 'background:#58936E;' : '' }}">
+                   class="{{ request()->routeIs('appointments.*') ? 'active' : '' }}">
                     <i class="fas fa-calendar-check"></i> Appointment & Treatment
                 </a>
 
                 <a href="{{ route('billings.index') }}"
-                   style="{{ request()->routeIs('billings.*') ? 'background:#58936E;' : '' }}">
+                   class="{{ request()->routeIs('billings.*') ? 'active' : '' }}">
                     <i class="fas fa-file-invoice-dollar"></i> Billing & Reports
                 </a>
+
             </div>
 
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('logout') }}" style="text-align:center; padding:15px 0;">
                 @csrf
                 <button class="logout-btn" type="submit">Logout</button>
             </form>
+
         </div>
 
         <div class="main-content">
@@ -146,10 +189,9 @@
     </div>
 
     <script>
-        function toggleDropdown(event, menuId, arrowId) {
-            // Allow the link to navigate
-            const menu = document.getElementById(menuId);
-            const arrow = document.getElementById(arrowId);
+        function toggleStaff() {
+            const menu  = document.getElementById('staff-submenu');
+            const arrow = document.getElementById('staff-arrow');
             menu.classList.toggle('open');
             arrow.classList.toggle('rotated');
         }
