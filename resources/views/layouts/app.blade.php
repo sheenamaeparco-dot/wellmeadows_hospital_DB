@@ -69,9 +69,10 @@
             font-family: 'Poppins', sans-serif;
             font-size: 15px;
             font-weight: 500;
+            white-space: nowrap;
         }
         .staff-parent-left i { width: 26px; min-width: 26px; text-align: center; font-size: 18px; }
-        .staff-arrow { font-size: 12px; transition: transform 0.3s ease; opacity: 0.8; }
+        .staff-arrow { font-size: 12px; transition: transform 0.3s ease; opacity: 0.8; flex-shrink: 0; align-self: center; }
         .staff-arrow.rotated { transform: rotate(180deg); }
 
         .staff-submenu {
@@ -99,60 +100,61 @@
         .staff-submenu a.active { background: #58936E; color: white; }
         /* ── Staff & Department dropdown styles (Lovely)── */
 
-        // Ward & Bed dropdown
+        /* Ward & Bed dropdown */
         .ward-parent {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: white;
-    text-decoration: none;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    gap: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.ward-parent:hover { background: #58936E; }
-.ward-parent.active { background: #58936E; }
-.ward-parent-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-}
-.ward-parent-left i { width: 26px; min-width: 26px; text-align: center; font-size: 18px; }
-.ward-arrow { font-size: 12px; transition: transform 0.3s ease; opacity: 0.8; }
-.ward-arrow.rotated { transform: rotate(180deg); }
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .ward-parent:hover { background: #58936E; }
+        .ward-parent.active { background: #58936E; }
+        .ward-parent-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .ward-parent-left i { width: 26px; min-width: 26px; text-align: center; font-size: 18px; }
+        .ward-arrow { font-size: 12px; transition: transform 0.3s ease; opacity: 0.8; flex-shrink: 0; align-self: center; }
+        .ward-arrow.rotated { transform: rotate(180deg); }
 
-.ward-submenu {
-    display: none;
-    flex-direction: column;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    margin-top: -4px;
-}
-.ward-submenu.open { display: flex; }
-.ward-submenu a {
-    display: flex;
-    align-items: center;
-    padding: 12px 18px;
-    border-radius: 10px;
-    margin-bottom: 4px;
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    transition: 0.3s;
-}
-.ward-submenu a:hover { background: #58936E; color: white; }
-.ward-submenu a.active { background: #58936E; color: white; }
+        .ward-submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            margin-top: -4px;
+        }
+        .ward-submenu.open { display: flex; }
+        .ward-submenu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            border-radius: 10px;
+            margin-bottom: 4px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+        .ward-submenu a:hover { background: #58936E; color: white; }
+        .ward-submenu a.active { background: #58936E; color: white; }
 
     </style>
 </head>
@@ -214,36 +216,36 @@
                 </div>
 
                 @if(request()->routeIs('ward.*'))
-    <a href="#"
-       class="ward-parent active"
-       onclick="event.preventDefault(); toggleWard()">
-        <div class="ward-parent-left">
-            <i class="fas fa-bed"></i> Ward & Bed
-        </div>
-        <i class="fas fa-chevron-down ward-arrow rotated" id="ward-arrow"></i>
-    </a>
-@else
-    <a href="{{ route('ward.index') }}"
-       class="ward-parent"
-       onclick="toggleWard()">
-        <div class="ward-parent-left">
-            <i class="fas fa-bed"></i> Ward & Bed
-        </div>
-        <i class="fas fa-chevron-down ward-arrow" id="ward-arrow"></i>
-    </a>
-@endif
+                    <a href="#"
+                       class="ward-parent active"
+                       onclick="event.preventDefault(); toggleWard()">
+                        <div class="ward-parent-left">
+                            <i class="fas fa-bed"></i> Ward & Bed
+                        </div>
+                        <i class="fas fa-chevron-down ward-arrow rotated" id="ward-arrow"></i>
+                    </a>
+                @else
+                    <a href="{{ route('ward.index') }}"
+                       class="ward-parent"
+                       onclick="toggleWard()">
+                        <div class="ward-parent-left">
+                            <i class="fas fa-bed"></i> Ward & Bed
+                        </div>
+                        <i class="fas fa-chevron-down ward-arrow" id="ward-arrow"></i>
+                    </a>
+                @endif
 
-<div class="ward-submenu {{ request()->routeIs('ward.*') ? 'open' : '' }}"
-     id="ward-submenu">
-    <a href="{{ route('ward.bedmap') }}"
-       class="{{ request()->routeIs('ward.bedmap') ? 'active' : '' }}">
-        Bed Map
-    </a>
-    <a href="{{ route('ward.requisitions') }}"
-       class="{{ request()->routeIs('ward.requisitions') ? 'active' : '' }}">
-        Requisitions
-    </a>
-</div>
+                <div class="ward-submenu {{ request()->routeIs('ward.*') ? 'open' : '' }}"
+                     id="ward-submenu">
+                    <a href="{{ route('ward.bedmap') }}"
+                       class="{{ request()->routeIs('ward.bedmap') ? 'active' : '' }}">
+                        Bed Map
+                    </a>
+                    <a href="{{ route('ward.requisitions') }}"
+                       class="{{ request()->routeIs('ward.requisitions') ? 'active' : '' }}">
+                        Requisitions
+                    </a>
+                </div>
 
                 <a href="{{ route('appointments.index') }}"
                    class="{{ request()->routeIs('appointments.*') ? 'active' : '' }}">
@@ -278,11 +280,11 @@
         }
 
         function toggleWard() {
-        const menu  = document.getElementById('ward-submenu');
-        const arrow = document.getElementById('ward-arrow');
-        menu.classList.toggle('open');
-        arrow.classList.toggle('rotated');
-    }
+            const menu  = document.getElementById('ward-submenu');
+            const arrow = document.getElementById('ward-arrow');
+            menu.classList.toggle('open');
+            arrow.classList.toggle('rotated');
+        }
     </script>
 </body>
 </html>
