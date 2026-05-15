@@ -198,21 +198,6 @@
                         <i class="fas fa-chevron-down staff-arrow" id="staff-arrow"></i>
                     </a>
                 @endif
-
-            <!-- Appointment and Treatment (Sheena) -->
-            <div class="sidebar-item">
-                <div onclick="toggleAppointmentMenu()" style="cursor: pointer; display: flex; color: white; padding: 20px; border-radius: 10px; margin-bottom: 10px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500; gap: 12px;" onmouseover="this.style.background='#58936E'" onmouseout="this.style.background='transparent'">
-                <i class="fas fa-calendar-check"></i> 
-                <span>Appointment & Treatment</span>
-                <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: auto; margin-top: 5px;"></i>
-            </div>
-
-            <div id="appointmentMenu" style="display:none; padding-left: 20px;">
-                <a href="{{ route('appointments.index') }}" style="display: block; color: white; text-decoration: none; padding: 10px 20px; font-size: 14px;">• View Dashboard</a>
-                <a href="{{ route('appointments.create') }}" style="display: block; color: white; text-decoration: none; padding: 10px 20px; font-size: 14px;">• New Appointment</a>
-            </div>
-    </div>
-            <!-- Appointment and Treatment (Sheena) -->
              
                 <div class="staff-submenu {{ request()->routeIs('staff.*') ? 'open' : '' }}"
                      id="staff-submenu">
@@ -262,10 +247,20 @@
                     </a>
                 </div>
 
-                <a href="{{ route('appointments.index') }}"
-                   class="{{ request()->routeIs('appointments.*') ? 'active' : '' }}">
-                    <i class="fas fa-calendar-check"></i> Appointment & Treatment
-                </a>
+                <!-- Appointment and Treatment (Sheena) -->
+            <div class="sidebar-item">
+                <div onclick="toggleAppointmentMenu()" style="cursor: pointer; display: flex; color: white; padding: 20px; border-radius: 10px; margin-bottom: 10px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500; gap: 12px;" onmouseover="this.style.background='#58936E'" onmouseout="this.style.background='transparent'">
+                <i class="fas fa-calendar-check"></i> 
+                <span>Appointment & Treatment</span>
+                <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: auto; margin-top: 5px;"></i>
+            </div>
+
+            <div id="appointmentMenu" style="display:none; padding-left: 20px;">
+                <a href="{{ route('appointments.index') }}" style="display: block; color: white; text-decoration: none; padding: 10px 20px; font-size: 14px;">• View Dashboard</a>
+                <a href="{{ route('appointments.create') }}" style="display: block; color: white; text-decoration: none; padding: 10px 20px; font-size: 14px;">• New Appointment</a>
+            </div>
+        </div>
+            <!-- Appointment and Treatment (Sheena) -->
 
                 <a href="{{ route('billings.index') }}"
                    class="{{ request()->routeIs('billings.*') ? 'active' : '' }}">
