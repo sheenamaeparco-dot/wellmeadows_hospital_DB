@@ -42,7 +42,7 @@
             80% { transform: rotate(-5deg); }
         }
 
-        /* Dropdown styles */
+        /* Dropdown styles sa Staff & Department */
         .dropdown-parent {
             display: flex;
             align-items: center;
