@@ -1,10 +1,12 @@
 <?php
+
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\StaffController;
-use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AppointmentController; //Sheena module 4
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WardBedController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,6 +45,10 @@ Route::get('/wards', [WardBedController::class, 'index'])->name('wards.index');
 
 // 4. Appointment & Treatment Module (Yours)
 Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('appointments.create'); //for new appointment button
+
+// ADD THIS LINE: This one handles the "Submit" button
+Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
 
 // 5. Billing 
 Route::get('/billings', [BillingController::class, 'index'])->name('billings.index');

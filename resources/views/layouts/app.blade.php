@@ -16,7 +16,7 @@
         .brand-container { display: flex; align-items: center; gap: 3px; margin-bottom: 20px; width: 100%; }
         .logo-img { width: 70px; height: 85px; object-fit: cover; transform: scale(1.5); }
         .sidebar .logo { font-size: 23px; font-weight: 700; font-family:'Poppins', sans-serif; color: white; white-space: nowrap; }
-        .sidebar-menu a { display:block; color:white; text-decoration:none; padding:20px; border-radius:10px; margin-bottom:10px; transition:0.3s; font-family:'Poppins', sans-serif; font-size:15px; font-weight:500; gap: 12px; }
+        .sidebar-menu a { display:flex; color:white; text-decoration:none; padding:20px; border-radius:10px; margin-bottom:10px; transition:0.3s; font-family:'Poppins', sans-serif; font-size:15px; font-weight:500; gap: 12px; }
         .sidebar-menu a i { width: 26px; min-width: 26px; text-align: center; font-size: 18px; }
         .sidebar-menu a:hover { background: #58936E; }
         .main-content { flex:1; padding:30px; }
@@ -72,9 +72,20 @@
                 <i class="fas fa-bed"></i> Ward & Bed
             </a>
 
-            <a href="{{ route('appointments.index') }}">
-                <i class="fas fa-calendar-check"></i> Appointment & Treatment
-            </a>
+            <!-- Appointment and Treatment (Sheena) -->
+            <div class="sidebar-item">
+                <div onclick="toggleAppointmentMenu()" style="cursor: pointer; display: flex; color: white; padding: 20px; border-radius: 10px; margin-bottom: 10px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500; gap: 12px;" onmouseover="this.style.background='#58936E'" onmouseout="this.style.background='transparent'">
+                <i class="fas fa-calendar-check"></i> 
+                <span>Appointment & Treatment</span>
+                <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: auto; margin-top: 5px;"></i>
+            </div>
+
+            <div id="appointmentMenu" style="display:none; padding-left: 20px;">
+                <a href="{{ route('appointments.index') }}" style="display: block; color: white; text-decoration: none; padding: 10px 20px; font-size: 14px;">• View Dashboard</a>
+                <a href="{{ route('appointments.create') }}" style="display: block; color: white; text-decoration: none; padding: 10px 20px; font-size: 14px;">• New Appointment</a>
+            </div>
+    </div>
+            <!-- Appointment and Treatment (Sheena) -->
 
             <a href="{{ route('billings.index') }}">
                 <i class="fas fa-file-invoice-dollar"></i> Billing & Reports
@@ -91,5 +102,18 @@
             @yield('content')
         </div>
     </div>
+    <!-- Appointment and Treatment - Sheena (para sakoa sidebar) -->
+<script>
+    function toggleAppointmentMenu() {
+        const menu = document.getElementById('appointmentMenu');
+
+        if (menu.style.display === 'none') {
+            menu.style.display = 'block';
+        } else {
+            menu.style.display = 'none';
+        }
+    }
+    /* Appointment and Treatment- Sheena (para sakoa sidebar) */
+</script>
 </body>
 </html>

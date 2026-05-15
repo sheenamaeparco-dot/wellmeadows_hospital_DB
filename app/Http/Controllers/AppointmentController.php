@@ -10,4 +10,10 @@ class AppointmentController extends Controller
     {
     return view('appointments.index');
     }
+
+    public function create()
+{
+    // Later, you'll fetch lists of Patients and Doctors here to fill dropdowns
+    return view('appointments.create'); 
+}
 }
