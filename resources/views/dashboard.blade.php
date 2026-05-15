@@ -3,7 +3,13 @@
 @section('content')
     <div class="topbar">
         <div>
-            <h2>Welcome, {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} 👋</h2>
+            <h2>
+                Welcome, {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                <i class="fas fa-hand-paper welcome-icon"></i>
+            </h2>
+
+
+
         </div>
     </div>
 
