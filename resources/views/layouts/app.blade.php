@@ -198,22 +198,27 @@
                         <i class="fas fa-chevron-down staff-arrow" id="staff-arrow"></i>
                     </a>
                 @endif
-             
+
                 <div class="staff-submenu {{ request()->routeIs('staff.*') ? 'open' : '' }}"
-                     id="staff-submenu">
+                    id="staff-submenu">
+                    <a href="{{ route('staff.index') }}"
+                    class="{{ request()->routeIs('staff.index') ? 'active' : '' }}">
+                        Dashboard
+                    </a>
                     <a href="{{ route('staff.management') }}"
-                       class="{{ request()->routeIs('staff.management') ? 'active' : '' }}">
+                    class="{{ request()->routeIs('staff.management') ? 'active' : '' }}">
                         Staff Management
                     </a>
                     <a href="{{ route('staff.departments') }}"
-                       class="{{ request()->routeIs('staff.departments') ? 'active' : '' }}">
+                    class="{{ request()->routeIs('staff.departments') ? 'active' : '' }}">
                         Departments & Wards
                     </a>
                     <a href="{{ route('staff.schedules') }}"
-                       class="{{ request()->routeIs('staff.schedules') ? 'active' : '' }}">
+                    class="{{ request()->routeIs('staff.schedules') ? 'active' : '' }}">
                         Work Schedules
                     </a>
                 </div>
+                <!-- Staff & Department with dropdown (Lovely) -->
 
                 @if(request()->routeIs('ward.*'))
                     <a href="#"
@@ -250,7 +255,7 @@
                 <!-- Appointment and Treatment (Sheena) -->
             <div class="sidebar-item">
                 <div onclick="toggleAppointmentMenu()" style="cursor: pointer; display: flex; color: white; padding: 20px; border-radius: 10px; margin-bottom: 10px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500; gap: 12px;" onmouseover="this.style.background='#58936E'" onmouseout="this.style.background='transparent'">
-                <i class="fas fa-calendar-check"></i> 
+                <i class="fas fa-calendar-check"></i>
                 <span>Appointment & Treatment</span>
                 <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: auto; margin-top: 5px;"></i>
             </div>

@@ -7,7 +7,22 @@ use Illuminate\Http\Request;
 class StaffController extends Controller
 {
     public function index()
-{
-    return view('staff.index'); // For now, just show the dashboard so it doesn't crash
-}
+    {
+        return view('staff.index');
+    }
+
+    public function management()
+    {
+        return view('staff.management');
+    }
+
+    public function departments()
+    {
+        return view('staff.departments');
+    }
+
+    public function schedules()
+    {
+        return view('staff.schedules');
+    }
 }
