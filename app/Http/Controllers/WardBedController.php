@@ -46,10 +46,49 @@ public function index()
         ));
     }
 
+     public function bedmap(Request $request)
+    {
+        $selectedWard = $request->query('ward_id', 1); 
+        $totalWardsCount = 17;
+        $bedsPerWardCount = 14;
 
-public function bedmap() {
-    return view('wards.bedmap');
-}
+        $wardSpecializations = [
+            1 => 'General Medicine', 2 => 'Pediatrics', 3 => 'Cardiology', 4 => 'Neurology',
+            5 => 'Oncology', 6 => 'ICU', 7 => 'Maternity', 8 => 'Psychiatry',
+            9 => 'Geriatrics', 10 => 'Dermatology', 11 => 'Orthopaedic', 12 => 'Gastroenterology',
+            13 => 'Nephrology', 14 => 'Pulmonology', 15 => 'Urology', 16 => 'ER Overflow', 17 => 'Isolation'
+        ];
+        
+        $selectedWardName = "Ward " . $selectedWard . " — " . ($wardSpecializations[$selectedWard] ?? 'General');
+
+        $bedNumberStartOffset = (($selectedWard - 1) * $bedsPerWardCount) + 1;
+        $bedsList = [];
+        $statusOptions = ['occupied', 'vacant', 'reserved'];
+
+        for ($i = 0; $i < $bedsPerWardCount; $i++) {
+            $currentBedNumber = $bedNumberStartOffset + $i;
+            $mockStatus = $statusOptions[($currentBedNumber) % 3]; 
+            $shortLabel = ($mockStatus == 'occupied') ? 'Occ' : (($mockStatus == 'reserved') ? 'Res' : 'Free');
+
+            $bedsList[] = (object)[
+                'bed_number' => $currentBedNumber,
+                'status'     => $mockStatus,
+                'label'      => $shortLabel,
+                'patient'    => $mockStatus === 'occupied' ? 'Ronald MacDonald · P100' . $currentBedNumber : '',
+                'admit'      => $mockStatus === 'occupied' ? '12-Jan-96' : '',
+                'leave'      => $mockStatus === 'occupied' ? '17-Jan-96' : ''
+            ];
+        }
+
+        $vacantBeds = array_filter($bedsList, function($bed) {
+            return $bed->status === 'vacant';
+        });
+
+        return view('wards.bedmap', compact('selectedWard', 'selectedWardName', 'totalWardsCount', 'bedsList', 'bedsPerWardCount', 'vacantBeds'));
+    }
+
+
+
 
 public function requisitions() {
     return view('wards.requisitions');

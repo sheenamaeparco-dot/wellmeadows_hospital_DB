@@ -218,7 +218,6 @@
                         Work Schedules
                     </a>
                 </div>
-
                 @if(request()->routeIs('ward.*'))
                     <a href="#"
                        class="ward-parent active"
@@ -241,6 +240,10 @@
 
                 <div class="ward-submenu {{ request()->routeIs('ward.*') ? 'open' : '' }}"
                      id="ward-submenu">
+                     <a href="{{ route('ward.index') }}"
+                       class="{{ request()->routeIs('ward.dashboard') ? 'active' : '' }}">
+                        Dashboard
+                    </a>
                     <a href="{{ route('ward.bedmap') }}"
                        class="{{ request()->routeIs('ward.bedmap') ? 'active' : '' }}">
                         Bed Map
@@ -250,6 +253,7 @@
                         Requisitions
                     </a>
                 </div>
+                <!-- Ward & Bed Management (Kelly) -->
 
                 <!-- Appointment and Treatment (Sheena) -->
             <div class="sidebar-item">

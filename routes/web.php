@@ -35,7 +35,7 @@ Route::get('/staff/management', [StaffController::class, 'management'])->name('s
 Route::get('/staff/departments', [StaffController::class, 'departments'])->name('staff.departments');
 Route::get('/staff/schedules', [StaffController::class, 'schedules'])->name('staff.schedules');
 
-// 3. Ward & Bed Management Module
+// 3. Ward & Bed Management Module (Kelly)
 Route::get('/ward', [WardBedController::class, 'index'])->name('ward.index');
 Route::get('/ward/bed-map', [WardBedController::class, 'bedmap'])->name('ward.bedmap');
 Route::get('/ward/requisitions', [WardBedController::class, 'requisitions'])->name('ward.requisitions');
