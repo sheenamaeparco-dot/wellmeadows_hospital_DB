@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Staff; 
+use App\Models\Staff;
 use Illuminate\Support\Facades\Hash;
 
 class StaffSeeder extends Seeder
@@ -12,9 +12,9 @@ class StaffSeeder extends Seeder
     {
         Staff::create([
             'staff_number' => 1,
-            'role_id' => 1, 
+            'role_id' => 1,
             'email' => 'paulray@gmail.com',
-            'password' => Hash::make('AdminAccess01'), 
+            'password' => Hash::make('AdminAccess01'),
             'first_name' => 'Paul',
             'last_name' => 'Ray',
             'position' => 'Admin',

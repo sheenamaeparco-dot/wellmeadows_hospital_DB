@@ -11,7 +11,7 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
         body { background:#f4f6f9; }
         .container { display:flex; min-height:100vh; }
-        .sidebar { width:280px; background: #2D533E; color:white; padding:15px 10px; backdrop-filter: blur(10px); display:flex; flex-direction:column; min-height:100vh; }
+        .sidebar { width: 280px; background: #2D533E; color: white; padding: 15px 10px; backdrop-filter: blur(10px);  display: flex; flex-direction: column; height: 100vh; position: sticky; top: 0;  overflow-y: auto; }
         .brand-container { display: flex; align-items: center; gap: 3px; margin-bottom: 20px; width: 100%; }
         .logo-img { width: 70px; height: 85px; object-fit: cover; transform: scale(1.5); }
         .sidebar .logo { font-size: 23px; font-weight: 700; font-family:'Poppins', sans-serif; color: white; white-space: nowrap; }
@@ -218,7 +218,6 @@
                         Work Schedules
                     </a>
                 </div>
-                <!-- Staff & Department with dropdown (Lovely) -->
 
                 @if(request()->routeIs('ward.*'))
                     <a href="#"
